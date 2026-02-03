@@ -1,0 +1,45 @@
+package com.benson.aicodehelper;
+
+import com.benson.aicodehelper.service.AiCodeHelperService;
+import jakarta.annotation.Resource;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class AiCodeHelperServiceTest {
+
+    @Resource
+    private AiCodeHelperService aiCodeHelperService;
+
+    @Test
+    void chat() {
+        String result = aiCodeHelperService.chat("你好，我是程序员Benson");
+        System.out.println(result);
+    }
+
+    @Test
+    void chatWithMemory() {
+        String result = aiCodeHelperService.chat("你好，我是程序员Benson");
+        System.out.println(result);
+        result = aiCodeHelperService.chat("你好，我是谁来着？");
+        System.out.println(result);
+    }
+
+    @Test
+    void chatWithMemoryId() {
+        String result = aiCodeHelperService.chatWithMemory("1","你好，我是程序员Benson");
+        System.out.println(result);
+        result = aiCodeHelperService.chatWithMemory("1","你好，我是谁来着？");
+        System.out.println(result);
+        result = aiCodeHelperService.chatWithMemory("2","你好，我是谁来着？");
+        System.out.println(result);
+    }
+
+    @Test
+    void chatForReport() {
+        String userMessage = "你好，我是程序员Benson，学编程两年半，请帮我制定学习报告";
+        AiCodeHelperService.Report report = aiCodeHelperService.chatForReport(userMessage);
+        System.out.println(report);
+    }
+
+}
