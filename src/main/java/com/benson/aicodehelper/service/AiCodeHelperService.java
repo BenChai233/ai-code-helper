@@ -10,8 +10,7 @@ import java.util.List;
 @AiService(chatModel = "zhipuChatModel",
         chatMemory = "windowChatMemory",
         chatMemoryProvider = "chatMemoryProvider",
-        tools = "localTimeTool",
-        toolProvider = "mcpToolProvider")
+        tools = "localTimeTool")
 public interface AiCodeHelperService {
 
     @SystemMessage(fromResource = "prompt/system-prompt.txt")

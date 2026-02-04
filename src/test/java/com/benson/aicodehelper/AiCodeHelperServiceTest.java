@@ -1,5 +1,6 @@
 package com.benson.aicodehelper;
 
+import com.benson.aicodehelper.service.AiCodeHelperMcpService;
 import com.benson.aicodehelper.service.AiCodeHelperRagService;
 import com.benson.aicodehelper.service.AiCodeHelperService;
 import dev.langchain4j.service.Result;
@@ -15,6 +16,9 @@ class AiCodeHelperServiceTest {
 
     @Resource
     private AiCodeHelperRagService aiCodeHelperRagService;
+
+    @Resource
+    private AiCodeHelperMcpService aiCodeHelperMcpService;
 
     @Test
     void chat() {
@@ -56,13 +60,13 @@ class AiCodeHelperServiceTest {
 
     @Test
     void chatWithTool() {
-        String result = aiCodeHelperService.chat("美国现在是什么时间");
+        String result = aiCodeHelperService.chat("现在是什么时间");
         System.out.println(result);
     }
 
     @Test
     void chatWithMcp() {
-        String result = aiCodeHelperService.chat("什么是程序员鱼皮的编程导航？");
+        String result = aiCodeHelperMcpService.chat("什么是程序员鱼皮的编程导航？");
         System.out.println(result);
     }
 
