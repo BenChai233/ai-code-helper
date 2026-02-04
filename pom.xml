@@ -62,6 +62,14 @@
             <version>1.10.0-beta18</version>
             <scope>compile</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/dev.langchain4j/langchain4j-mcp -->
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-mcp</artifactId>
+            <version>1.10.0-beta18</version>
+        </dependency>
+
     </dependencies>
     
     <build>
