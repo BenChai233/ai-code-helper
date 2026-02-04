@@ -7,3 +7,6 @@ zhipu:
   ai:
     api-key: 3c9be82654a04f959c2c11ec26f0ca65.iMEWa9tsYuGgCMsZ
     model: glm-4.6
+baidu:
+  map:
+    api-key: ""
