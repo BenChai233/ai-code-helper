@@ -7,7 +7,7 @@ import dev.langchain4j.service.spring.AiService;
 
 import java.util.List;
 
-@AiService(chatModel = "zhipuChatModel", chatMemory = "windowChatMemory", chatMemoryProvider = "chatMemoryProvider")
+@AiService(chatModel = "zhipuChatModel", chatMemory = "windowChatMemory", chatMemoryProvider = "chatMemoryProvider", tools = "localTimeTool")
 public interface AiCodeHelperService {
 
     @SystemMessage(fromResource = "prompt/system-prompt.txt")

@@ -53,4 +53,13 @@ class AiCodeHelperServiceTest {
         System.out.println(result.content());
         System.out.println(result.sources());
     }
+
+    /**
+     *
+     */
+    @Test
+    void chatWithTool() {
+        String result = aiCodeHelperService.chat("美国现在是什么时间");
+        System.out.println(result);
+    }
 }
