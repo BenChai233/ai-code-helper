@@ -1,6 +1,8 @@
 package com.benson.aicodehelper;
 
+import com.benson.aicodehelper.service.AiCodeHelperRagService;
 import com.benson.aicodehelper.service.AiCodeHelperService;
+import dev.langchain4j.service.Result;
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,6 +12,9 @@ class AiCodeHelperServiceTest {
 
     @Resource
     private AiCodeHelperService aiCodeHelperService;
+
+    @Resource
+    private AiCodeHelperRagService aiCodeHelperRagService;
 
     @Test
     void chat() {
@@ -42,4 +47,10 @@ class AiCodeHelperServiceTest {
         System.out.println(report);
     }
 
+    @Test
+    void chatWithRag() {
+        Result<String> result = aiCodeHelperRagService.chatWithRag("2012网站里有什么微服务模块？");
+        System.out.println(result.content());
+        System.out.println(result.sources());
+    }
 }
