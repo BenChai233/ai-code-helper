@@ -1,5 +1,6 @@
 package com.benson.aicodehelper.config;
 
+import com.benson.aicodehelper.model.NullFilteringStreamingChatModel;
 import dev.langchain4j.community.model.zhipu.ZhipuAiChatModel;
 import dev.langchain4j.community.model.zhipu.ZhipuAiStreamingChatModel;
 import dev.langchain4j.model.chat.ChatModel;
@@ -18,6 +19,9 @@ public class ChatModelManager {
     @Value("${zhipu.ai.api-key}")
     private String apiKey;
 
+    @Value("${zhipu.ai.model:glm-4}")
+    private String model;
+
     @Resource
     private ChatModelListener chatModelListener;
 
@@ -28,7 +32,7 @@ public class ChatModelManager {
 //                .logRequests(true)
 //                .logResponses(true)
                 .listeners(List.of(chatModelListener))
-                .model("glm-4.6")
+                .model(model)
                 .temperature(0.7)
                 .maxToken(4096)
                 .build();
@@ -37,12 +41,12 @@ public class ChatModelManager {
     @Bean(name = "streamingChatModel")
     public StreamingChatModel streamingChatModel() {
         ZhipuAiStreamingChatModel streamingChatModel = ZhipuAiStreamingChatModel.builder()
-                .model("glm-4.6")
+                .model(model)
                 .logRequests(true)
                 .logResponses(true)
                 .listeners(List.of(chatModelListener))
                 .apiKey(apiKey)
                 .build();
-        return streamingChatModel;
+        return new NullFilteringStreamingChatModel(streamingChatModel);
     }
 }
