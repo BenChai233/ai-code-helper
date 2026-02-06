@@ -1,5 +1,6 @@
 package com.benson.aicodehelper;
 
+import com.benson.aicodehelper.service.AiCodeHelper;
 import dev.langchain4j.data.message.ImageContent;
 import dev.langchain4j.data.message.TextContent;
 import dev.langchain4j.data.message.UserMessage;

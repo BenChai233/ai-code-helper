@@ -1,8 +1,10 @@
 package com.benson.aicodehelper.service;
 
+import com.benson.aicodehelper.guardrail.SafeInputGuardrail;
 import dev.langchain4j.service.MemoryId;
 import dev.langchain4j.service.SystemMessage;
 import dev.langchain4j.service.UserMessage;
+import dev.langchain4j.service.guardrail.InputGuardrails;
 import dev.langchain4j.service.spring.AiService;
 
 import java.util.List;
@@ -11,6 +13,7 @@ import java.util.List;
         chatMemory = "windowChatMemory",
         chatMemoryProvider = "chatMemoryProvider",
         tools = "localTimeTool")
+@InputGuardrails(SafeInputGuardrail.class)
 public interface AiCodeHelperService {
 
     @SystemMessage(fromResource = "prompt/system-prompt.txt")

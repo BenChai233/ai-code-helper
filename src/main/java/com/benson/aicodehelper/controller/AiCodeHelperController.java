@@ -1,23 +1,24 @@
 package com.benson.aicodehelper.controller;
 
-import com.benson.aicodehelper.service.AiCodeHelperService;
+import com.benson.aicodehelper.service.AiCodeHelperStreamingService;
 import jakarta.annotation.Resource;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.codec.ServerSentEvent;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
 
-@Controller
+@RestController
+@RequestMapping("/ai")
 public class AiCodeHelperController {
     @Resource
-    private AiCodeHelperService aiCodeHelperService;
+    private AiCodeHelperStreamingService aiCodeHelperStreamingService;
 
-    @GetMapping("/chat/{cid}")
-    public String chat(@PathVariable String cid,
-                       @RequestParam("msg") String msg) {
-        String response = aiCodeHelperService.chatWithMemory(cid, msg);
-        System.out.println(response);
-        return response;
+    @GetMapping("/chat")
+    public Flux<ServerSentEvent<String>> chat(int memoryId, String message) {
+        return aiCodeHelperStreamingService.chatStream(memoryId, message)
+                .map(chunk -> ServerSentEvent.<String>builder()
+                        .data(chunk)
+                        .build());
     }
-
 }

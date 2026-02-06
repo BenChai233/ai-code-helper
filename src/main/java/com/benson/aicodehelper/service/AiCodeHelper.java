@@ -1,4 +1,4 @@
-package com.benson.aicodehelper;
+package com.benson.aicodehelper.service;
 
 import dev.langchain4j.data.message.AiMessage;
 import dev.langchain4j.data.message.SystemMessage;

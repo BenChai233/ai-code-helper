@@ -18,8 +18,8 @@ public class McpConfig {
     @Value("${zhipu.ai.api-key}")
     private String apiKey;
 
-    @Value("${baidu.map.api-key}")
-    private String baiduMapApiKey;
+//    @Value("${baidu.map.api-key}")
+//    private String baiduMapApiKey;
 
     @Bean("mcpToolProvider")
     public McpToolProvider mcpToolProvider() {
@@ -38,9 +38,9 @@ public class McpConfig {
                 .transport(webSearchTransport)
                 .build();
 
-        if (baiduMapApiKey == null || baiduMapApiKey.isBlank()) {
-            throw new IllegalStateException("Missing baidu.map.api-key for MCP transport");
-        }
+//        if (baiduMapApiKey == null || baiduMapApiKey.isBlank()) {
+//            throw new IllegalStateException("Missing baidu.map.api-key for MCP transport");
+//        }
 //        McpTransport baiduMapTransport = StdioMcpTransport.builder()
 //                .command(List.of("npx", "-y", "@baidumap/mcp-server-baidu-map"))
 //                .environment(Map.of("BAIDU_MAP_API_KEY", baiduMapApiKey))
