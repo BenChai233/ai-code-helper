@@ -19,7 +19,7 @@ public class ChatModelManager {
     @Value("${zhipu.ai.api-key}")
     private String apiKey;
 
-    @Value("${zhipu.ai.model:glm-4}")
+    @Value("${zhipu.ai.model:glm-4-flash}")
     private String model;
 
     @Resource
